@@ -85,6 +85,7 @@
   color: var(--color-text-dark);
   text-decoration: none;
   line-height: 1.5;
+  word-break: break-word;
 }
 
 .contact-socials {
@@ -328,14 +329,23 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .form-row {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
   
-  .booking-form-card {
-    padding: 2rem;
+  .booking-form-card,
+  .contact-info-card {
+    padding: 1.5rem;
+  }
+  
+  .booking-header-section {
+    padding: 3rem 1rem;
+  }
+  
+  .btn-submit-booking {
+    padding: 1rem;
   }
 }
 
