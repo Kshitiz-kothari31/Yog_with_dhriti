@@ -21,17 +21,24 @@ const days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 const Schedule = () => {
   const [activeTab, setActiveTab] = useState('studio');
   const [selectedClass, setSelectedClass] = useState(null);
+  const [bookingPrompt, setBookingPrompt] = useState(null);
+  const [userNameInput, setUserNameInput] = useState('');
   const navigate = useNavigate();
 
   const currentSchedule = scheduleData[activeTab];
 
-  const handleBookSlot = (e, classDetails) => {
+  const handleBookSlotClick = (e, classDetails) => {
     e.stopPropagation();
-    const userName = window.prompt(`Booking ${classDetails.name} on ${classDetails.day.toUpperCase()} at ${classDetails.time}.\n\nPlease enter your name to confirm:`);
-    if (userName && userName.trim() !== '') {
-      const message = `*New Booking Request*%0A%0A*Name:* ${userName.trim()}%0A*Class:* ${classDetails.name}%0A*Day/Time:* ${classDetails.day.toUpperCase()} at ${classDetails.time}%0A*Teacher:* ${classDetails.teacher}`;
+    setBookingPrompt(classDetails);
+    setUserNameInput('');
+  };
+
+  const confirmBooking = () => {
+    if (userNameInput && userNameInput.trim() !== '') {
+      const message = `*New Booking Request*%0A%0A*Name:* ${userNameInput.trim()}%0A*Class:* ${bookingPrompt.name}%0A*Day/Time:* ${bookingPrompt.day.toUpperCase()} at ${bookingPrompt.time}%0A*Teacher:* ${bookingPrompt.teacher}`;
       const whatsappUrl = `https://wa.me/919412318526?text=${message}`;
       window.open(whatsappUrl, '_blank');
+      setBookingPrompt(null);
     }
   };
 
@@ -83,7 +90,7 @@ const Schedule = () => {
                         <span className={classInfo.spots <= 3 ? 'spots-low' : 'spots-normal'}>
                           {classInfo.spots} spots {classInfo.spots <= 3 ? 'left!' : 'available'}
                         </span>
-                        <button className="btn-book-green-small" onClick={(e) => handleBookSlot(e, { ...classInfo, day, time: row.time })}>Book Slot</button>
+                        <button className="btn-book-green-small" onClick={(e) => handleBookSlotClick(e, { ...classInfo, day, time: row.time })}>Book Slot</button>
                       </div>
                     </div>
                   )}
@@ -122,12 +129,39 @@ const Schedule = () => {
                 </span>
                 <button 
                   className="btn-book-green" 
-                  onClick={(e) => handleBookSlot(e, selectedClass)}
+                  onClick={(e) => handleBookSlotClick(e, selectedClass)}
                 >
                   Book Slot
                 </button>
               </div>
             </div>
+          </div>
+        </div>,
+        document.body
+      )}
+
+      {bookingPrompt && createPortal(
+        <div className="schedule-modal-overlay" onClick={() => setBookingPrompt(null)}>
+          <div className="name-prompt-modal animate-pop-in" onClick={(e) => e.stopPropagation()}>
+            <button className="schedule-modal-close" onClick={() => setBookingPrompt(null)}>&times;</button>
+            <h3 className="prompt-title">Almost there!</h3>
+            <p className="prompt-subtitle">
+              Booking <strong>{bookingPrompt.name}</strong> on {bookingPrompt.day.toUpperCase()} at {bookingPrompt.time}
+            </p>
+            <input 
+              type="text" 
+              value={userNameInput} 
+              onChange={(e) => setUserNameInput(e.target.value)} 
+              placeholder="Enter your full name"
+              className="name-prompt-input"
+              autoFocus
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') confirmBooking();
+              }}
+            />
+            <button className="btn-primary prompt-confirm-btn" onClick={confirmBooking}>
+              Confirm Booking
+            </button>
           </div>
         </div>,
         document.body

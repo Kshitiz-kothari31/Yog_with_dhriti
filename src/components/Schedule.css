@@ -333,6 +333,61 @@
   transform: translateY(-1px);
 }
 
+.name-prompt-modal {
+  background-color: var(--color-bg-white);
+  padding: 2.5rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.prompt-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.prompt-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-dark);
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.prompt-subtitle strong {
+  font-weight: 600;
+}
+
+.name-prompt-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(74, 62, 57, 0.2);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  color: var(--color-text-dark);
+  margin-bottom: 1.5rem;
+  background-color: var(--color-bg-light);
+  transition: border-color 0.3s ease;
+}
+
+.name-prompt-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background-color: white;
+}
+
+.prompt-confirm-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
 .animate-pop-in {
   animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
