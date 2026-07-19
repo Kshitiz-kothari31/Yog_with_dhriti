@@ -4,6 +4,7 @@ import Journey from '../components/Journey';
 import Philosophy from '../components/Philosophy';
 import Certifications from '../components/Certifications';
 import Testimonials from '../components/Testimonials';
+import WellnessHub from '../components/WellnessHub';
 import CTA from '../components/CTA';
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <Philosophy />
       <Certifications />
       <Testimonials />
+      <WellnessHub />
       <CTA />
     </div>
   );
