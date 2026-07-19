@@ -58,6 +58,11 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    background-image: url('/class2.png');
+    background-position: center top;
+  }
+
   .hero-title {
     font-size: 2.8rem;
   }
@@ -77,6 +82,6 @@
   }
 
   .hero::before {
-    background: rgba(251, 249, 248, 0.85);
+    background: rgba(251, 249, 248, 0.55);
   }
 }
