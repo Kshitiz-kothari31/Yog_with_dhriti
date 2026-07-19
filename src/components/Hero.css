@@ -61,6 +61,7 @@
   .hero {
     background-image: url('/class2.png');
     background-position: center top;
+    padding-top: 0;
   }
 
   .hero-subtitle {
