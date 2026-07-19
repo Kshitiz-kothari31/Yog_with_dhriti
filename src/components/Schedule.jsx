@@ -25,6 +25,16 @@ const Schedule = () => {
 
   const currentSchedule = scheduleData[activeTab];
 
+  const handleBookSlot = (e, classDetails) => {
+    e.stopPropagation();
+    const userName = window.prompt(`Booking ${classDetails.name} on ${classDetails.day.toUpperCase()} at ${classDetails.time}.\n\nPlease enter your name to confirm:`);
+    if (userName && userName.trim() !== '') {
+      const message = `*New Booking Request*%0A%0A*Name:* ${userName.trim()}%0A*Class:* ${classDetails.name}%0A*Day/Time:* ${classDetails.day.toUpperCase()} at ${classDetails.time}%0A*Teacher:* ${classDetails.teacher}`;
+      const whatsappUrl = `https://wa.me/919412318526?text=${message}`;
+      window.open(whatsappUrl, '_blank');
+    }
+  };
+
   return (
     <section className="schedule-section">
       <div className="schedule-header">
@@ -73,7 +83,7 @@ const Schedule = () => {
                         <span className={classInfo.spots <= 3 ? 'spots-low' : 'spots-normal'}>
                           {classInfo.spots} spots {classInfo.spots <= 3 ? 'left!' : 'available'}
                         </span>
-                        <button className="btn-book-green-small" onClick={(e) => { e.stopPropagation(); navigate('/booking'); }}>Book Slot</button>
+                        <button className="btn-book-green-small" onClick={(e) => handleBookSlot(e, { ...classInfo, day, time: row.time })}>Book Slot</button>
                       </div>
                     </div>
                   )}
@@ -112,9 +122,7 @@ const Schedule = () => {
                 </span>
                 <button 
                   className="btn-book-green" 
-                  onClick={() => {
-                    navigate('/booking');
-                  }}
+                  onClick={(e) => handleBookSlot(e, selectedClass)}
                 >
                   Book Slot
                 </button>
