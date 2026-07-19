@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useNavigate } from 'react-router-dom';
+import { Video } from 'lucide-react';
 import './Schedule.css';
 
 const scheduleData = {
   studio: [
-    { time: '07:00 AM', mon: { name: 'Vinyasa Flow', duration: '60 min', teacher: 'Maya', about: 'A dynamic sequence linking breath with movement to energize your morning.' }, wed: { name: 'Vinyasa Flow', duration: '60 min', teacher: 'Maya', about: 'A dynamic sequence linking breath with movement to energize your morning.' }, fri: { name: 'Sunrise Flow', duration: '45 min', teacher: 'Liam', about: 'Wake up your body and mind with this gentle yet invigorating sunrise flow.' } },
-    { time: '10:00 AM', tue: { name: 'Meditation', duration: '30 min', teacher: 'Sarah', about: 'Find your center and quiet your mind with guided meditation techniques.' }, thu: { name: 'Pranayama', duration: '30 min', teacher: 'Sarah', about: 'Learn powerful breathing exercises to balance your nervous system.' }, sat: { name: 'Hatha Basis', duration: '90 min', teacher: 'Elena', about: 'A grounding practice focusing on alignment, holding postures, and deep breathing.' }, sun: { name: 'Hatha Basis', duration: '90 min', teacher: 'Elena', about: 'A grounding practice focusing on alignment, holding postures, and deep breathing.' } },
-    { time: '06:00 PM', mon: { name: 'Yin & Sound', duration: '75 min', teacher: 'David', about: 'Deep tissue stretching accompanied by healing sound bowl vibrations.' }, tue: { name: 'Power Vinyasa', duration: '60 min', teacher: 'Maya', about: 'A vigorous fitness-based approach to vinyasa style yoga.' }, wed: { name: 'Restorative', duration: '75 min', teacher: 'David', about: 'Deeply relaxing postures using props to support the physical body.' }, thu: { name: 'Vinyasa Flow', duration: '60 min', teacher: 'Maya', about: 'A dynamic sequence linking breath with movement.' } },
+    { time: '07:00 AM', mon: { name: 'Vinyasa Flow', duration: '60 min', teacher: 'Maya', about: 'A dynamic sequence linking breath with movement to energize your morning.', spots: 5 }, wed: { name: 'Vinyasa Flow', duration: '60 min', teacher: 'Maya', about: 'A dynamic sequence linking breath with movement to energize your morning.', spots: 3 }, fri: { name: 'Sunrise Flow', duration: '45 min', teacher: 'Liam', about: 'Wake up your body and mind with this gentle yet invigorating sunrise flow.', spots: 8 } },
+    { time: '10:00 AM', tue: { name: 'Meditation', duration: '30 min', teacher: 'Sarah', about: 'Find your center and quiet your mind with guided meditation techniques.', spots: 12 }, thu: { name: 'Pranayama', duration: '30 min', teacher: 'Sarah', about: 'Learn powerful breathing exercises to balance your nervous system.', spots: 2 }, sat: { name: 'Hatha Basis', duration: '90 min', teacher: 'Elena', about: 'A grounding practice focusing on alignment, holding postures, and deep breathing.', spots: 5 }, sun: { name: 'Hatha Basis', duration: '90 min', teacher: 'Elena', about: 'A grounding practice focusing on alignment, holding postures, and deep breathing.', spots: 3 } },
+    { time: '06:00 PM', mon: { name: 'Yin & Sound', duration: '75 min', teacher: 'David', about: 'Deep tissue stretching accompanied by healing sound bowl vibrations.', spots: 1 }, tue: { name: 'Power Vinyasa', duration: '60 min', teacher: 'Maya', about: 'A vigorous fitness-based approach to vinyasa style yoga.', spots: 5 }, wed: { name: 'Restorative', duration: '75 min', teacher: 'David', about: 'Deeply relaxing postures using props to support the physical body.', spots: 4 }, thu: { name: 'Vinyasa Flow', duration: '60 min', teacher: 'Maya', about: 'A dynamic sequence linking breath with movement.', spots: 8 } },
   ],
   online: [
-    { time: '08:00 AM', mon: { name: 'Morning Flow', duration: '45 min', teacher: 'Zoom', about: 'Online morning yoga session.' }, wed: { name: 'Morning Flow', duration: '45 min', teacher: 'Zoom', about: 'Online morning yoga session.' } },
-    { time: '05:00 PM', tue: { name: 'Desk Stretch', duration: '30 min', teacher: 'Zoom', about: 'Quick mobility exercises perfect for a mid-workday break.' }, thu: { name: 'Desk Stretch', duration: '30 min', teacher: 'Zoom', about: 'Quick mobility exercises perfect for a mid-workday break.' } },
+    { time: '08:00 AM', mon: { name: 'Morning Flow', duration: '45 min', teacher: 'Zoom', about: 'Online morning yoga session.', spots: 100 }, wed: { name: 'Morning Flow', duration: '45 min', teacher: 'Zoom', about: 'Online morning yoga session.', spots: 100 } },
+    { time: '05:00 PM', tue: { name: 'Desk Stretch', duration: '30 min', teacher: 'Zoom', about: 'Quick mobility exercises perfect for a mid-workday break.', spots: 100 }, thu: { name: 'Desk Stretch', duration: '30 min', teacher: 'Zoom', about: 'Quick mobility exercises perfect for a mid-workday break.', spots: 100 } },
   ]
 };
 
@@ -19,6 +21,7 @@ const days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 const Schedule = () => {
   const [activeTab, setActiveTab] = useState('studio');
   const [selectedClass, setSelectedClass] = useState(null);
+  const navigate = useNavigate();
 
   const currentSchedule = scheduleData[activeTab];
 
@@ -66,6 +69,12 @@ const Schedule = () => {
                     >
                       <h4>{classInfo.name}</h4>
                       <span>{classInfo.duration} &bull; {classInfo.teacher}</span>
+                      <div className="class-grid-footer">
+                        <span className={classInfo.spots <= 3 ? 'spots-low' : 'spots-normal'}>
+                          {classInfo.spots} spots {classInfo.spots <= 3 ? 'left!' : 'available'}
+                        </span>
+                        <button className="btn-book-green-small" onClick={(e) => { e.stopPropagation(); navigate('/booking'); }}>Book Slot</button>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -85,9 +94,30 @@ const Schedule = () => {
             </div>
             <div className="modal-body">
               <p className="modal-about">{selectedClass.about}</p>
+              
+              {selectedClass.teacher === 'Zoom' && (
+                <div className="modal-badge online-badge">
+                  <Video size={14} /> Online (Zoom)
+                </div>
+              )}
+
               <div className="modal-details">
                 <p><strong>Duration:</strong> {selectedClass.duration}</p>
-                <p><strong>Teacher:</strong> {selectedClass.teacher}</p>
+                <p><strong>Teacher:</strong> {selectedClass.teacher !== 'Zoom' ? selectedClass.teacher : 'Virtual'}</p>
+              </div>
+
+              <div className="modal-footer-actions">
+                <span className={selectedClass.spots <= 3 ? 'spots-low-large' : 'spots-available'}>
+                  {selectedClass.spots} spots {selectedClass.spots <= 3 ? 'left!' : 'available'}
+                </span>
+                <button 
+                  className="btn-book-green" 
+                  onClick={() => {
+                    navigate('/booking');
+                  }}
+                >
+                  Book Slot
+                </button>
               </div>
             </div>
           </div>

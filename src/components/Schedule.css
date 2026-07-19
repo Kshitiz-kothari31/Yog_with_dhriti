@@ -233,6 +233,7 @@
   background-color: var(--color-bg-light);
   padding: 1.25rem;
   border-radius: 8px;
+  margin-bottom: 1.5rem;
 }
 
 .modal-details p {
@@ -245,6 +246,91 @@
 .modal-details strong {
   font-weight: 600;
   color: var(--color-primary);
+}
+
+.modal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.online-badge {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+.modal-footer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.spots-available {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+.spots-low-large {
+  font-size: 0.85rem;
+  color: #C27863;
+  font-weight: 600;
+}
+
+.btn-book-green {
+  background-color: #43655A;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease;
+}
+
+.btn-book-green:hover {
+  transform: translateY(-2px);
+}
+
+.class-grid-footer {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.spots-normal {
+  font-size: 0.7rem;
+  color: var(--color-text-light);
+}
+
+.spots-low {
+  font-size: 0.7rem;
+  color: #C27863;
+  font-weight: 600;
+}
+
+.btn-book-green-small {
+  background-color: #43655A;
+  color: white;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.7rem;
+  width: 100%;
+  transition: transform 0.2s ease;
+}
+
+.btn-book-green-small:hover {
+  transform: translateY(-1px);
 }
 
 .animate-pop-in {
