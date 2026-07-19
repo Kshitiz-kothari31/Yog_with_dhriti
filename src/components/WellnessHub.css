@@ -237,17 +237,20 @@
 }
 
 .btn-close-article {
-  background-color: #43655A;
+  background-color: var(--color-primary);
   color: white;
   padding: 0.6rem 1.5rem;
   border-radius: 9999px;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
   white-space: nowrap;
+  border: none;
+  cursor: pointer;
 }
 
 .btn-close-article:hover {
+  background-color: var(--color-primary-dark);
   transform: translateY(-2px);
 }
 
@@ -266,27 +269,44 @@
     font-size: 2rem;
   }
   
+  .article-modal-overlay {
+    padding: 0;
+  }
+  
+  .article-modal-content {
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+  }
+  
+  .article-modal-close {
+    top: 1rem;
+    right: 1rem;
+  }
+  
   .article-modal-header {
-    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    padding: 1.5rem 1rem 1rem 1rem;
   }
   
   .article-modal-header h2 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
   }
   
   .article-modal-body {
-    padding: 0 1.5rem 2rem 1.5rem;
-    font-size: 1rem;
+    padding: 0 1rem 1.5rem 1rem;
+    font-size: 0.95rem;
   }
   
   .article-modal-footer {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.5rem;
-    padding: 1.5rem;
+    gap: 1rem;
+    padding: 1rem;
   }
   
   .btn-close-article {
     width: 100%;
+    padding: 0.75rem;
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import './WellnessHub.css';
 
@@ -71,6 +71,17 @@ const articles = [
 
 const WellnessHub = () => {
   const [selectedArticle, setSelectedArticle] = useState(null);
+
+  useEffect(() => {
+    if (selectedArticle) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedArticle]);
 
   return (
     <section className="wellness-hub">
