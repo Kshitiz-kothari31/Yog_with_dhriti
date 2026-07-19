@@ -1,0 +1,35 @@
+.floating-book-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--color-accent-brown);
+  color: var(--color-bg-white);
+  padding: 1rem 1.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 1rem;
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.floating-book-btn:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px -5px rgba(74, 62, 57, 0.2);
+}
+
+@media (max-width: 768px) {
+  .floating-book-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}

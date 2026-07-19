@@ -1,0 +1,144 @@
+.philosophy {
+  background-color: #F5F1EF;
+  padding: 6rem 2rem;
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card-1 {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  background-color: #FBF9F8;
+}
+
+.card-2 {
+  grid-column: 3 / 4;
+  grid-row: 1;
+  background-color: #8A4E39;
+}
+
+.card-3 {
+  grid-column: 1 / 2;
+  grid-row: 2;
+  background-color: #F4D7CC;
+}
+
+.card-4 {
+  grid-column: 2 / 4;
+  grid-row: 2;
+}
+
+.phil-card {
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.bg-white {
+  background-color: var(--color-bg-white);
+}
+
+.bg-brown {
+  background-color: var(--color-accent-brown);
+}
+
+.bg-peach {
+  background-color: var(--color-accent-peach);
+}
+
+.text-white {
+  color: var(--color-bg-white) !important;
+}
+
+.opacity-80 {
+  opacity: 0.8;
+}
+
+.phil-icon {
+  margin-bottom: 1.5rem;
+}
+
+.phil-icon-center {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.card-2 {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.phil-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.phil-card p {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.phil-image {
+  margin-top: auto;
+  border-radius: 8px;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.flex-row {
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem;
+}
+
+.phil-image-small {
+  width: 250px;
+  height: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-1,
+  .card-2,
+  .card-3,
+  .card-4 {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .flex-row {
+    flex-direction: column;
+  }
+
+  .phil-image-small {
+    width: 100%;
+    height: auto;
+  }
+}

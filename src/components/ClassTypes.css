@@ -1,0 +1,151 @@
+.class-types {
+  padding-top: 0;
+}
+
+.class-types-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vinyasa {
+  width: 615px;
+  height: 400px;
+}
+
+.yin {
+  width: 432.67px;
+  height: 400px;
+}
+
+.class-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  height: 400px;
+  cursor: pointer;
+}
+
+.class-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.class-card:hover img {
+  transform: scale(1.05);
+}
+
+.class-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2.5rem;
+  background: linear-gradient(to top, rgba(74, 62, 57, 0.9) 0%, rgba(74, 62, 57, 0) 100%);
+  color: var(--color-bg-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.class-tag {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  color: var(--color-bg-white);
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: fit-content;
+  margin-bottom: 1rem;
+}
+
+.class-card h3 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--color-bg-white);
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.class-card p {
+  font-size: 0.95rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.class-card:hover p {
+  opacity: 0.9;
+  transform: translateY(0);
+  max-height: 100px;
+  margin-top: 0.5rem;
+}
+
+.class-card:hover h3 {
+  transform: translateY(-5px);
+}
+
+.meditation {
+  width: 341.33px;
+  height: 350px;
+}
+
+.class-text-card {
+  width: 706.67px;
+  background-color: var(--color-bg-white);
+  border-radius: 16px;
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 350px;
+}
+
+.class-text-card h3 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.class-text-card p {
+  color: var(--color-text-dark);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 1100px) {
+  .vinyasa, .yin, .meditation, .class-text-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .class-types-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .class-card, .class-text-card {
+    height: auto;
+    min-height: 350px;
+  }
+  .class-card p {
+    opacity: 0.9;
+    transform: none;
+    max-height: none;
+    margin-top: 0.5rem;
+  }
+}

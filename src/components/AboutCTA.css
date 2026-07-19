@@ -1,0 +1,53 @@
+.about-cta-wrapper {
+  background-color: var(--color-bg-white);
+  padding: 5rem 2rem 6rem 2rem;
+}
+
+.about-cta-card {
+  background-color: var(--color-primary);
+  border-radius: 16px;
+  padding: 5rem 2rem;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-cta-card h2 {
+  font-size: 3rem;
+  color: var(--color-bg-white);
+  margin-bottom: 1.5rem;
+}
+
+.about-cta-card p {
+  font-size: 1.1rem;
+  color: var(--color-bg-white);
+  opacity: 0.9;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.about-cta-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-cta-primary {
+  background-color: var(--color-bg-white);
+  color: var(--color-primary);
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.btn-cta-primary:hover {
+  transform: translateY(-2px);
+  background-color: #f8f8f8;
+}
+
+@media (max-width: 600px) {
+  .about-cta-card h2 {
+    font-size: 2.2rem;
+  }
+}

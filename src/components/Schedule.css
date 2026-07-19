@@ -1,0 +1,281 @@
+.schedule-section {
+  background-color: var(--color-bg-white);
+  padding: 6rem 2rem;
+}
+
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.schedule-subtitle {
+  color: var(--color-text-light);
+  font-size: 1rem;
+}
+
+.schedule-toggle {
+  background-color: var(--color-bg-light);
+  border-radius: 9999px;
+  padding: 0.25rem;
+  display: flex;
+  border: 1px solid rgba(74, 62, 57, 0.1);
+}
+
+.toggle-btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  transition: all 0.3s ease;
+}
+
+.toggle-btn.active {
+  background-color: var(--color-primary);
+  color: var(--color-bg-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.schedule-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 2rem;
+}
+
+.schedule-row {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  gap: 1rem;
+  min-width: 900px;
+  align-items: stretch;
+}
+
+.header-row {
+  border-bottom: 1px solid rgba(74, 62, 57, 0.1);
+  padding-bottom: 1rem;
+}
+
+.time-col, .day-col {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  padding: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.day-col {
+  justify-content: center;
+}
+
+.class-cell {
+  min-height: 80px;
+}
+
+.class-block {
+  background-color: var(--color-accent-peach);
+  border-radius: 8px;
+  padding: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.class-block:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  background-color: #f0e1db;
+}
+
+.class-block h4 {
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-sans);
+}
+
+.class-block span {
+  font-size: 0.7rem;
+  color: var(--color-text-dark);
+  opacity: 0.7;
+}
+
+/* Row Dividers */
+.schedule-row:not(:last-child) {
+  border-bottom: 1px dotted rgba(74, 62, 57, 0.2);
+  padding-bottom: 1.5rem;
+}
+
+/* Teacher Color Themes */
+.teacher-maya {
+  background-color: #FDF1ED;
+  border-left: 3px solid #C57E6B;
+}
+
+.teacher-sarah {
+  background-color: #FCE1D5;
+  border-left: 3px solid #C57E6B;
+}
+
+.teacher-elena {
+  background-color: #FDF1ED;
+  border-left: 3px solid #C57E6B;
+}
+
+.teacher-david {
+  background-color: #F5EFEB;
+  border-left: 3px solid #7B6862;
+}
+
+.teacher-liam {
+  background-color: #FDF1ED;
+  border-left: 3px solid #C57E6B;
+}
+
+.teacher-zoom {
+  background-color: #F0F4F8;
+  border-left: 3px solid #6B8EAD;
+}
+
+/* Modal Styling */
+.schedule-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(248, 245, 243, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.schedule-modal-content {
+  background-color: var(--color-bg-white);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.schedule-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-text-dark);
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.schedule-modal-close:hover {
+  opacity: 1;
+}
+
+.modal-header {
+  padding: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.modal-header h3 {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.modal-header p {
+  font-size: 0.85rem;
+  color: var(--color-text-dark);
+  opacity: 0.7;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-about {
+  font-size: 1rem;
+  color: var(--color-text-dark);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.modal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: var(--color-bg-light);
+  padding: 1.25rem;
+  border-radius: 8px;
+}
+
+.modal-details p {
+  font-size: 0.9rem;
+  color: var(--color-text-dark);
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-details strong {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.animate-pop-in {
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .schedule-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  
+  .schedule-section {
+    padding: 4rem 1rem;
+  }
+
+  .schedule-grid {
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .schedule-modal-content {
+    margin: 1rem;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
